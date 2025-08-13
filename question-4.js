@@ -13,7 +13,19 @@ const gammaDev = [
   { name: "Faythe", age: 18, department: "Engineering" },
   { name: "Grace", age: 20, department: "Engineering" },
 ];
-const allEmployees = [...alphaTech, ...betaSoft, ...gammaDev];
+const alphaTechMap = alphaTech.map((alphaEmployee) => ({
+  ...alphaEmployee,
+  company: "alphaTech",
+}));
+const betaSoftMap = betaSoft.map((betaEmployee) => ({
+  ...betaEmployee,
+  company: "betaSoft",
+}));
+const gammaDevMap = gammaDev.map((gammaEmployee) => ({
+  ...gammaEmployee,
+  company: "gammaDev",
+}));
+const allEmployees = [...alphaTechMap, ...betaSoftMap, ...gammaDevMap];
 const result = allEmployees
   .filter((employees) => {
     return employees.department === "Engineering" && employees.age >= 20;
@@ -21,7 +33,7 @@ const result = allEmployees
   .map((employee) => {
     return {
       name: employee.name,
-      company: "ติดตรงนี้ครับ T T"
+      company: employee.company,
     };
   });
 
